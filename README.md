@@ -1,12 +1,28 @@
-# 📖 Bible Emoji Challenge 🎉
+# 📖 Sunday School Games 🎉
 
-A complete, cheerful Sunday school game for 2–4 teams and mixed ages K–6. No accounts, API keys, build tools, internet connection, or backend are needed to play.
+A cheerful classroom game hub for mixed ages K–6. Choose **Bible Emoji Challenge** or **Bible Trivia** on the front page. No accounts, API keys, build tools, internet connection, or backend are needed to play.
+
+## Bible Trivia
+
+- **1–4 teams**, editable names, and 10, 15, 20, 30, or all 60 questions.
+- **60 questions:** 20 Easy (K–2), 20 Medium (grades 3–4), 20 Hard (grades 5–6), from both Testaments. Each includes an answer, acceptable alternatives where useful, a Bible reference, and a short explanation.
+- Choose the **first question’s difficulty**, then choose **Easy, Medium, or Hard after every question**. Difficulties are never chosen automatically.
+- Scores: **Easy 100**, **Medium 200**, **Hard 300**. Incorrect or Skip earns 0. Teams take turns; the teacher may award the question to any team.
+- Answers stay hidden until **Reveal Answer**. Select the winning team, then **Correct · Award Points**. A question can be scored once. The next difficulty buttons appear after judging or skipping.
+- **Undo Score** reverses the latest award, incorrect result, skip, or manual adjustment. If an earlier question becomes unjudged, review it before adding another question. It does not delete newer questions.
+- **± Score** adds or subtracts whole points. Previous / Return to Latest lets the teacher review played questions.
+- No question repeats. When a difficulty is exhausted, its button is disabled; choose another difficulty. End Game can finish early after confirmation. The results screen celebrates all tied winners.
+- Trivia saves automatically in `bibleTrivia.game.v1`; Emoji Challenge retains its existing `bibleEmoji.*` keys. Switching games never resets the other game. Refresh opens the hub; choose **Continue Trivia** or **Continue Emoji Game** to resume.
+- Keyboard shortcuts: **R** reveal, **U** undo, **1 / 2 / 3** choose Easy / Medium / Hard when difficulty choices are available. These are disabled while typing or in dialogs. The shared **F** shortcut toggles fullscreen.
+- Trivia runs without a countdown so the teacher can allow discussion. The Emoji timer and sound settings remain available in Emoji Challenge.
+
+The root `index.html` now opens the game-selection hub. Existing Emoji Challenge saved games, question edits, and settings remain compatible. The old `Bible-Emoji-Challenge.zip` in the repository is an archive of the original single-game release; use GitHub **Code → Download ZIP** for the latest two-game site.
 
 ## Play immediately
 
 Open **index.html** in Chrome, Edge, Safari, or a mobile browser. Start a new game, name your teams, and choose your settings. The teacher controls the game; children give answers verbally. For a tablet or phone, hosting on GitHub Pages or Netlify is usually easier than opening a downloaded HTML attachment.
 
-The root `index.html` is self-contained: all styles, JavaScript, and 40 puzzles are embedded. You can upload **just that one file** to a website, or copy it to a laptop and play offline. Keep the file in the same location and browser to retain its local saved data. Emoji appearance varies by operating system.
+The root `index.html` is self-contained: all styles, JavaScript, and both game libraries are embedded. You can upload **just that one file** to a website, or copy it to a laptop and play offline. Keep the file in the same location and browser to retain its local saved data. Emoji appearance varies by operating system.
 
 ## Upload manually to GitHub
 
@@ -24,7 +40,7 @@ Either drag the extracted folder containing `index.html` onto Netlify's manual d
 
 For reliable offline play, download and open the single HTML file locally. A hosted page needs a connection for its initial load; this project does not register a service worker.
 
-## Teacher guide
+## Emoji Challenge teacher guide
 
 - Default: four teams, mixed difficulty, 20 questions, 30 seconds, one double-points question, and a final challenge. Sound and music start muted. Speed rounds are optional.
 - Correct: **100 points**, **70 after hint 1**, **40 after hint 2**. Double points: **200 / 140 / 80**. Incorrect: **0**.
@@ -76,7 +92,12 @@ Settings, library edits, game questions, team scores, countdown, and undo histor
 - `src/styles.css`: responsive theme, animation, reduced-motion support.
 - `src/questions.js`: the organized default question library.
 - `src/engine.js`: pure question selection, scoring, undo, ranking, and JSON validation rules.
-- `src/app.js`: teacher interface, editor, storage, keyboard, timer, and local sound.
+- `src/app.js`: game-selection hub plus Emoji teacher interface, editor, storage, keyboard, timer, and local sound.
+- `src/trivia-questions.js`: 60 editable trivia questions.
+- `src/trivia-engine.js`: trivia selection, scoring, undo, rankings, and save validation.
+- `src/trivia.js`: trivia setup, teacher controls, difficulty choices, and independent saved progress.
+- `tests/trivia.test.cjs`: trivia rules checks.
+- `tests/trivia.browser.test.cjs`: hub, trivia workflow, and cross-game persistence checks.
 - `build.py`: embeds the source into `index.html`, using only Python's standard library.
 - `tests/engine.test.cjs`: rules tests using Node's built-in test/assert modules.
 - `tests/browser.test.cjs`: optional Playwright workflow test.
@@ -84,7 +105,7 @@ Settings, library edits, game questions, team scores, countdown, and undo histor
 
 After editing source, run `python3 build.py`. No build is needed for the provided HTML. You can preview the modular source by running `python3 -m http.server 8000` and visiting `/src/index.template.html`.
 
-Run rules tests: `node tests/engine.test.cjs`. For browser checks, install Playwright in your development environment and provide Chromium using `CHROMIUM_PATH=/path/to/chromium node tests/browser.test.cjs`. These are development-only tools; game players need none of them.
+Run rules tests: `node tests/engine.test.cjs` and `node tests/trivia.test.cjs`. For browser checks, install Playwright in your development environment and provide Chromium using `CHROMIUM_PATH=/path/to/chromium node tests/browser.test.cjs`. Run the Trivia workflow with `CHROMIUM_PATH=/path/to/chromium node tests/trivia.browser.test.cjs`. These are development-only tools; game players need none of them.
 
 ## Accessibility and classroom layout
 

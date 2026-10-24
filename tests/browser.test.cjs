@@ -47,9 +47,9 @@ const root=path.resolve(__dirname,'..');
  await page.screenshot({path:path.join(root,'game-preview.png'),fullPage:true});
  for(const [width,height] of [[1920,1080],[1366,768],[1024,768],[768,1024],[390,844]]){await page.setViewportSize({width,height});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Game overflows at ${width}`);}
  await click('home');for(const [width,height] of [[768,1024],[390,844]]){await page.setViewportSize({width,height});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Home overflows at ${width}`);}
- await click('settings');await page.check('#settings-form [name="sound"]');await page.check('#settings-form [name="music"]');await page.check('#settings-form [name="ticking"]');await page.locator('#settings-form button[type="submit"]').click();assert((await page.locator('#sound').innerText()).includes('on'));await page.locator('#sound').click();
+ await click('settings');await page.check('#settings-form [name="sound"]');await page.check('#settings-form [name="music"]');await page.check('#settings-form [name="ticking"]');await page.locator('#settings-form button[type="submit"]').click();assert((await page.locator('#sound').innerText()).includes('on'));await click('continue');await page.locator('#sound').click();
  // No remote assets: the deployed distribution embeds its source and remains interactive offline.
- await page.context().setOffline(true);await click('continue');await click('hint');assert.equal(await page.locator('.hint').count(),1);await page.context().setOffline(false);
+ await page.context().setOffline(true);await click('hint');assert.equal(await page.locator('.hint').count(),1);await page.context().setOffline(false);
  assert.equal(await page.locator('script[src],link[rel="stylesheet"]').count(),0);
  assert.deepEqual(errors,[]);console.log('PASS: teacher workflow, hint scoring, duplicate prevention, undo, timer expiry, refresh, editor, import/export, final scoring, rankings, 5 screen sizes, offline interaction; no JavaScript errors.');
  }finally{if(browser)await browser.close();server.close();}

@@ -47,3 +47,12 @@ Browser verification uses Chromium. Safari, Edge, actual touch hardware, and a p
 The managed test browser blocks navigation to local `file://` URLs by policy, so that exact launch mode could not be exercised here. The same self-contained HTML passed static HTTP and offline-interaction checks. Its runtime has no fetches, imports, or asset requests; only a browser is needed to open the downloaded file on a normal laptop.
 
 No deployment was performed: the requested deliverable is a manually uploadable static application.
+
+
+## Game hub and Bible Trivia (October 2026 update)
+
+`node tests/trivia.test.cjs`: 10 checks cover the 60-question schema and difficulty counts, 1–4 teams, chosen difficulty on every draw, exact 100/200/300 scores, reveal and duplicate-award protection, mandatory judging before advancing, all 60 questions without repetition, exhausted difficulty and length limits, incorrect / skip / score undo, undo after advancing, manual adjustments, ties, JSON restoration, and invalid-save rejection.
+
+`node tests/trivia.browser.test.cjs`: actual teacher workflow covers both game cards, saved Emoji compatibility, 1–4 team setup, name preservation when changing team count, Easy → Hard → Medium selection, awards to different teams, locked scoring, undo, incorrect, skip, manual correction, refresh recovery, Previous / Latest navigation, canceled new/end game, game length, rankings, tied winners, replay, help dialog, offline interaction, and layout at projector, laptop, tablet, and phone widths. JavaScript page errors are collected and must be absent. The original Emoji browser suite is also rerun with the new hub.
+
+The source build embeds all six JavaScript modules and the stylesheet into the same portable `index.html`; no external runtime dependencies were added.

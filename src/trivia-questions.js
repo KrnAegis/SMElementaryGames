@@ -1,0 +1,72 @@
+/* Verbal-answer Bible trivia: 20 questions per age band, across both Testaments. */
+(function(root){
+const rows={
+easy:[
+['Who built an ark to keep his family and animals safe from a flood?','Noah',[],'Genesis 6:13–22','Noah obeyed God and built the ark.'],
+['Who defeated Goliath with a sling and a stone?','David',[],'1 Samuel 17:40–50','David trusted God as he faced the giant Goliath.'],
+['Who was swallowed by a great fish?','Jonah',[],'Jonah 1:17','God sent a great fish, and Jonah prayed inside it.'],
+['Who was Jesus’ mother?','Mary',[],'Luke 1:26–35; 2:6–7','Mary was chosen to be the mother of Jesus.'],
+['In which town was Jesus born?','Bethlehem',[],'Luke 2:4–7','Mary and Joseph were in Bethlehem when Jesus was born.'],
+['What kind of work did the shepherds do?','They cared for sheep',['Looked after sheep'],'Luke 2:8–20','Shepherds were watching their flocks when angels announced Jesus’ birth.'],
+['Who was protected by God in a den of lions?','Daniel',[],'Daniel 6:16–23','God sent an angel to shut the lions’ mouths.'],
+['What did Jesus use, along with two fish, to feed a crowd of five thousand men?','Five loaves of bread',['Five loaves','Bread'],'John 6:9–13','A boy brought five barley loaves and two fish. Jesus fed the crowd with food left over.'],
+['What did God put in the clouds as a sign of his promise after the flood?','A rainbow',['Rainbow'],'Genesis 9:12–17','The rainbow was a sign of God’s covenant with Noah and living creatures.'],
+['What did God create on the first day?','Light',[],'Genesis 1:3–5','God said for there to be light and separated light from darkness.'],
+['Who were the first man and woman in Genesis?','Adam and Eve',['Eve and Adam'],'Genesis 2:7–25; 3:20','Genesis tells how God made the first people and placed them in a garden.'],
+['What did Jesus do when a storm frightened his disciples in a boat?','He calmed the storm',['Stopped the wind and waves'],'Mark 4:35–41','Jesus spoke to the wind and sea, and they became calm.'],
+['What animal did the shepherd search for in Jesus’ story about one that was lost?','A sheep',['Sheep','A lost sheep'],'Luke 15:3–7','The shepherd searched for one missing sheep and rejoiced when he found it.'],
+['Who climbed a tree so he could see Jesus?','Zacchaeus',[],'Luke 19:1–6','Zacchaeus was short, so he climbed a sycamore tree to see Jesus.'],
+['What did Jesus ride into Jerusalem?','A donkey',['Donkey','A colt'],'Matthew 21:1–9','Jesus entered Jerusalem riding a donkey as people welcomed him.'],
+['What happened to Jesus on the third day after his death?','He rose from the dead',['The resurrection','He came back to life'],'Luke 24:1–7','The women found the tomb empty and heard that Jesus was alive.'],
+['Who received the Ten Commandments from God on Mount Sinai?','Moses',[],'Exodus 19:20; 20:1–17; 31:18','God gave Moses instructions for the people of Israel.'],
+['How many disciples did Jesus choose to be his apostles?','Twelve',['12'],'Luke 6:12–16','Jesus chose twelve of his disciples and called them apostles.'],
+['When people brought children to Jesus, did he welcome them or send them away?','He welcomed them',['Welcomed them','Blessed them'],'Mark 10:13–16','Jesus welcomed the children and blessed them.'],
+['In Jesus’ story, who helped a hurt traveler when others passed by?','A Samaritan',['The Good Samaritan'],'Luke 10:30–37','The Samaritan showed mercy by caring for the wounded traveler.']
+],
+medium:[
+['What sea did the Israelites cross on dry ground after leaving Egypt?','The Red Sea',['Red Sea','Sea of Reeds'],'Exodus 14:21–22','God opened a path through the sea, and the Israelites crossed on dry ground.'],
+['Who led Israel when the walls of Jericho fell?','Joshua',[],'Joshua 6:1–20','Joshua followed God’s instructions for the people to march around Jericho.'],
+['How many times did the Israelites march around Jericho on the seventh day?','Seven times',['Seven','7'],'Joshua 6:15','On the seventh day, the people marched around the city seven times.'],
+['What was the name of the garden where Adam and Eve lived?','Eden',['The Garden of Eden'],'Genesis 2:8','God planted a garden in Eden and placed the man there.'],
+['Which son of Jacob received a special robe from his father?','Joseph',[],'Genesis 37:3–4','Jacob gave Joseph a special robe, and Joseph’s brothers became jealous.'],
+['What did Jesus turn water into at a wedding in Cana?','Wine',[],'John 2:1–11','At Cana, Jesus told servants to fill jars with water, which became wine.'],
+['Who stepped out of a boat to walk on the water toward Jesus?','Peter',[],'Matthew 14:28–31','Peter stepped toward Jesus, became afraid, and Jesus reached out to save him.'],
+['Which queen bravely spoke to the king to help protect the Jewish people?','Esther',['Queen Esther'],'Esther 4:13–16; 7:1–6','Esther courageously spoke up when her people were threatened.'],
+['Who stayed with her mother-in-law Naomi and went with her to Bethlehem?','Ruth',[],'Ruth 1:16–22','Ruth remained loyal to Naomi and traveled with her to Bethlehem.'],
+['What was the name of the man Jesus called out of a tomb?','Lazarus',[],'John 11:38–44','Jesus called Lazarus to come out and brought him back to life.'],
+['Who baptized Jesus in the Jordan River?','John the Baptist',['John'],'Matthew 3:13–17','John baptized Jesus, and a voice from heaven spoke about God’s beloved Son.'],
+['Who denied knowing Jesus three times before the rooster crowed?','Peter',['Simon Peter'],'Luke 22:54–62','Peter denied knowing Jesus and then wept when he remembered Jesus’ words.'],
+['What did Jesus’ friends open to lower a man on a mat into a crowded house?','The roof',['A hole in the roof'],'Mark 2:1–12','Four friends lowered the man through the roof so he could reach Jesus.'],
+['What city was Saul traveling to when Jesus met him in a bright light?','Damascus',[],'Acts 9:1–9','Saul met Jesus on the road to Damascus.'],
+['What was Moses looking after when he saw the burning bush?','Sheep',['A flock','His father-in-law’s flock'],'Exodus 3:1–2','Moses was caring for Jethro’s flock when he saw the bush burning without being consumed.'],
+['What did God provide on the ground for the Israelites to eat in the wilderness?','Manna',['Bread from heaven'],'Exodus 16:13–18, 31','God provided manna, which the people gathered to eat.'],
+['In the parable of the sower, what happened to seed that fell on good soil?','It grew and produced a crop',['It produced grain','It bore fruit'],'Mark 4:8, 20','Jesus compared good soil to people who hear and accept God’s word.'],
+['Who was the older brother of Moses and served as his spokesman?','Aaron',[],'Exodus 4:14–16','God said that Aaron would help Moses speak to the people.'],
+['What did the father do when his lost son returned home in Jesus’ parable?','He ran to welcome him and celebrated',['He welcomed him','He hugged him','He forgave him'],'Luke 15:20–24','The father joyfully welcomed his returning son and called for a celebration.'],
+['What did Jesus share with his disciples to remember him at the Last Supper?','Bread and a cup',['Bread and wine'],'Luke 22:14–20','Jesus shared bread and a cup and told his disciples to remember him.']
+],
+hard:[
+['On which mountain did God answer Elijah’s prayer with fire?','Mount Carmel',['Carmel'],'1 Kings 18:19–39','God answered Elijah with fire, and the people recognized the Lord as God.'],
+['How many men were in Gideon’s army when they went against Midian?','Three hundred',['300'],'Judges 7:7–8','God used Gideon’s small army of three hundred to deliver Israel.'],
+['What did Gideon’s soldiers break to reveal their hidden torches?','Clay jars that they broke',['Jars','Pitchers'],'Judges 7:16–20','The soldiers hid torches inside jars, then broke the jars and held up the lights.'],
+['Who interpreted the mysterious writing on King Belshazzar’s wall?','Daniel',[],'Daniel 5:13–28','Daniel explained the message that appeared during the king’s feast.'],
+['Which prophet told a widow to borrow empty jars for her little supply of oil?','Elisha',[],'2 Kings 4:1–7','The oil filled the borrowed jars so the widow could sell it and pay her debts.'],
+['Who dreamed of a stairway reaching to heaven with angels going up and down?','Jacob',[],'Genesis 28:10–17','God promised to be with Jacob as he dreamed of the stairway.'],
+['What name did Jacob give the place where he dreamed of the stairway?','Bethel',[],'Genesis 28:18–19','Jacob named the place Bethel after God spoke to him there.'],
+['What were Paul and Silas doing in prison at midnight before the earthquake?','Praying and singing hymns',['Praying and singing'],'Acts 16:25–26','Paul and Silas prayed and sang, and the other prisoners listened.'],
+['Which woman hid the Israelite spies in Jericho?','Rahab',[],'Joshua 2:1–6','Rahab hid the spies and helped them escape from Jericho.'],
+['What did Rahab tie in her window as the agreed sign for the spies?','A scarlet cord',['A red cord','A scarlet rope','A red rope'],'Joshua 2:17–21','The spies told Rahab to tie a scarlet cord in her window.'],
+['Who heard God calling his name as a boy while serving with Eli?','Samuel',[],'1 Samuel 3:1–10','Eli helped Samuel understand that the Lord was calling him.'],
+['Which king asked God for wisdom to lead the people?','Solomon',['King Solomon'],'1 Kings 3:5–12','Solomon asked for a discerning heart to govern the people well.'],
+['In the parable of the ten bridesmaids, what extra supply did the five wise ones bring?','Oil for their lamps',['Oil','Extra oil'],'Matthew 25:1–13','The wise bridesmaids brought oil and were ready when the bridegroom arrived.'],
+['What was the name of the woman who sold purple cloth and welcomed Paul in Philippi?','Lydia',[],'Acts 16:13–15','Lydia listened to Paul’s message and offered hospitality to him and his companions.'],
+['Who climbed into a chariot to explain Isaiah to an Ethiopian official?','Philip',[],'Acts 8:26–35','Philip explained how the passage in Isaiah pointed to Jesus.'],
+['Who was chosen by lot to join the eleven apostles after Judas?','Matthias',[],'Acts 1:23–26','The believers prayed and cast lots, and Matthias was chosen.'],
+['Which man asked Pilate for Jesus’ body and placed it in a tomb?','Joseph of Arimathea',['Joseph'],'Luke 23:50–53','Joseph of Arimathea wrapped Jesus’ body and laid it in a new tomb.'],
+['What were the names of the two sisters whose brother was Lazarus?','Mary and Martha',['Martha and Mary'],'John 11:1–5','Mary, Martha, and Lazarus lived in Bethany. Jesus loved this family.'],
+['What happened to the people’s languages at the Tower of Babel?','God confused their language so they could not understand each other',['Their languages became different','They could not understand one another'],'Genesis 11:1–9','The people stopped building the city and were scattered across the earth.'],
+['Which prophet challenged King David with a story about a rich man taking a poor man’s lamb?','Nathan',[],'2 Samuel 12:1–13','Nathan used the story to help David recognize the wrong he had done.']
+]};
+const questions=Object.entries(rows).flatMap(([difficulty,list])=>list.map(([question,answer,alternatives,reference,explanation],i)=>({id:`trivia-${difficulty}-${i+1}`,difficulty,question,answer,alternatives,reference,explanation})));
+if(typeof module!=='undefined')module.exports=questions;else root.TRIVIA_QUESTIONS=questions;
+})(typeof window!=='undefined'?window:globalThis);
